@@ -6,6 +6,8 @@
 \usepackage[utf8x]{inputenx}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{listings}
+\lstset{language=MatLab}
 
 
 \begin{document}
@@ -28,10 +30,19 @@
 	a) P(Dreier)= \( \frac{\binom{6}{3} * \binom{39}{3}}{\binom{45}{6}}=\frac{20*9139}{8.145.060}=0.022406\)\\
 	b) P(Vierer)= \( \frac{\binom{6}{4} * \binom{39}{2}}{\binom{45}{6}}=\frac{15*741}{8.145.060}=0.001365\)\\
 	c) P(Fünfer)= \( \frac{\binom{6}{5} * \binom{39}{1}}{\binom{45}{6}}=\frac{6*39}{8.145.060}=0.00002873\)\\
-	d) P(Sechser)= \( \frac{\binom{6}{6} * 1}{\binom{45}{6}}=\frac{1}{8.145.060}=0.000000122773\)\\
-	
-	
-	
-	\\
+	d) P(Sechser)= \( \frac{\binom{6}{6} * 1}{\binom{45}{6}}=\frac{1}{8.145.060}=0.000000122773\)\\\\
+	PDF für berechnung:\\
+	\begin{lstlisting}[frame=single]
+		p3= hygepdf(3,45,6,6)
+		p4= hygepdf(4,45,6,6)
+		p5= hygepdf(5,45,6,6)
+		p6= hygepdf(6,45,6,6)
+	\end{lstlisting}
+	Output:\\
+	p3 =  0.022441\\
+	p4 =  0.0013646\\
+	p5 =   2.8729e-005\\
+	p6 =   1.2277e-007\\
+
 	\section*{6)}
 \end{document}
