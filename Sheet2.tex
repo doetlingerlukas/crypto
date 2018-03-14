@@ -1,6 +1,5 @@
 \documentclass[11pt,a4paper]{article}
 
-
 \usepackage{amsmath}
 \usepackage[ngerman]{babel}
 \usepackage[utf8x]{inputenx}
@@ -12,7 +11,7 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \lstset{language=MatLab}
-
+\author{}
 
 \begin{document}
 	\title{InformationsTheorie und Kryptologie: 2.Blatt für 15.3.2018}
@@ -73,4 +72,23 @@
 	p6 =   1.2277e-007\\
 
 	\section*{6)}
+
+  \begin{align*}
+    \text{Ergebnisraum}\ \Omega = (0,1]
+  \end{align*}
+
+  a) Die Wahrscheinlichkeit, dass die Fläche kleiner als $\frac{1}{2}$ ist die gleiche wie die, dass die Seitenlänge kleiner als $\sqrt{\frac{1}{2}}$ ist:
+
+  \begin{align*}
+    P((0,\sqrt{\frac{1}{2}})) = \frac{\sqrt{\frac{1}{2}} - 0}{1} = \sqrt{\frac{1}{2}} \approx 70,2 \%
+  \end{align*}
+
+  b) Die Wahrscheinlichkeit, dass die Fläche größer als $\frac{1}{2}$ ist, ist die gleiche wie die, dass die Seitenlänge größer als $\sqrt{\frac{1}{2}}$ ist:
+
+  \begin{align*}
+    P((\sqrt{\frac{1}{2}},1)) = \frac{1 - \sqrt{\frac{1}{2}}}{1} = 1 - \sqrt{\frac{1}{2}} \approx 29,2 \%
+  \end{align*}
+
+  Da beide Intervalle für die Fläche gleich lang sind, aber nicht die gleiche Wahrscheinlichkeit haben, ist die Fläche nicht gleichverteilt.
+
 \end{document}
