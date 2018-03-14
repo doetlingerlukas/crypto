@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper]{article}
+
+
+\usepackage{amsmath}
+\usepackage[ngerman]{babel}
+\usepackage[utf8x]{inputenx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\lstset{language=MatLab}
+
+
+\begin{document}
+	\title{InformationsTheorie und Kryptologie: 2.Blatt für 15.3.2018}
+	\maketitle
+	
+	\section*{4)}
+	\section*{5)}
+	Wie groß ist die Wahrscheinlichkeit, beim Lotto "6 aus 45":
+	\begin{itemize}
+		\item einen Dreier
+		\item einen Vierer
+		\item einen Fünfer
+		\item einen Sechser
+	\end{itemize}
+	zu tippen? Überprüfen Sie Ihre Berechnung mit einer Geeigneten odf von GNu Octave oder MatLab.\\
+	
+	\textbf{Binomialkoeffizient} für die verschiedenen Möglichkeiten 6 Zahlen aus 45 zu ziehen.\\\\
+	\(M=\binom{45}{6} =\frac{45!}{(45-6)! * 6!}= 8.145.060\)\\\\
+	a) P(Dreier)= \( \frac{\binom{6}{3} * \binom{39}{3}}{\binom{45}{6}}=\frac{20*9139}{8.145.060}=0.022406\)\\
+	b) P(Vierer)= \( \frac{\binom{6}{4} * \binom{39}{2}}{\binom{45}{6}}=\frac{15*741}{8.145.060}=0.001365\)\\
+	c) P(Fünfer)= \( \frac{\binom{6}{5} * \binom{39}{1}}{\binom{45}{6}}=\frac{6*39}{8.145.060}=0.00002873\)\\
+	d) P(Sechser)= \( \frac{\binom{6}{6} * 1}{\binom{45}{6}}=\frac{1}{8.145.060}=0.000000122773\)\\\\
+	PDF für berechnung:\\
+	\begin{lstlisting}[frame=single]
+		p3= hygepdf(3,45,6,6)
+		p4= hygepdf(4,45,6,6)
+		p5= hygepdf(5,45,6,6)
+		p6= hygepdf(6,45,6,6)
+	\end{lstlisting}
+	Output:\\
+	p3 =  0.022441\\
+	p4 =  0.0013646\\
+	p5 =   2.8729e-005\\
+	p6 =   1.2277e-007\\
+
+	\section*{6)}
+\end{document}
