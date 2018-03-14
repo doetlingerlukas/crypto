@@ -63,7 +63,8 @@
 						node at (5.6 cm, 3 cm) {1};
 
 					\foreach \x/\y in {0/0.9375, 1/2.8125, 2/4.6875, 3/3.75, 4/2.8125} {
-						\draw (\x cm,0cm) rectangle (1cm + \x cm,\y cm);
+						\draw (\x cm, 0cm) rectangle (1cm + \x cm,\y cm)
+							node at (0.5cm + \x cm, 0.5cm) {$x_\x$};
 					};
 				\end{tikzpicture}
       \end{minipage}
@@ -112,7 +113,7 @@
 		\item einen Fünfer
 		\item einen Sechser
 	\end{itemize}
-	zu tippen? Überprüfen Sie Ihre Berechnung mit einer Geeigneten odf von GNu Octave oder MatLab.\\
+	zu tippen? Überprüfen Sie Ihre Berechnung mit einer Geeigneten odf von GNU Octave oder MatLab.\\
 
 	\textbf{Binomialkoeffizient} für die verschiedenen Möglichkeiten 6 Zahlen aus 45 zu ziehen.\\\\
 	\(M=\binom{45}{6} =\frac{45!}{(45-6)! * 6!}= 8.145.060\)\\\\
@@ -133,6 +134,7 @@
 	p5 =   2.8729e-005\\
 	p6 =   1.2277e-007\\
 
+	\newpage
 	\section*{6)}
 
   \begin{align*}
