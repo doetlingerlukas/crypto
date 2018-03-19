@@ -1,0 +1,84 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[ngerman]{babel}
+\usepackage[utf8x]{inputenx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\lstset{language=MatLab}
+\author{}
+
+\begin{document}
+	\title{InformationsTheorie und Kryptologie: 3.Blatt für 22.3.2018}
+	\maketitle
+
+	
+	\section*{7)}
+	In einer Stadt sind 90\% aller Taxis grün und der Rest blau. Bei einem Unfall mit Fahrerflucht war das Fahrzeug laut einem Augenzeugen ein blaues Taxi. Die Polizei nimmt an, dass der Augenzeuge ehrlich aussagt. Zur Zeit des Unfalls war es aber dunkel, und man weiss aus Erfahrung, dass unter diesen Verhältnissen Augenzeugen in einem von zehn Fällen grüne Taxis als blau beschreiben und umgekehrt. Wie groß ist die Wahrscheinlichkeit, dass das Unfall-Taxi wirklich blau war?\\
+	\\
+	\begin{tabular}{cc}		 
+		G = Taxi ist grün & NG = Taxi wurde bei Nacht als grün erkannt \\ 		 
+		B = Taxi ist blau & NB = Taxi wurde bei Nacht als blau erkannt \\ 		 
+	\end{tabular} \\
+	\\
+	\begin{tabular}{c|c|c}		 
+		\(P(G) = \frac{9}{10}\) & \(P(NG|B) = \frac{1}{10}\) & \(P(NG^c|B) = P(NB|B) = 1 - \frac{1}{10}\) \\ 		 
+		\(P(B) = \frac{1}{10}\) & \(P(NB|G) = \frac{1}{10}\) & \(P(NB^c|G) = P(NG|G) = 1 - \frac{1}{10}\) \\ 		 
+	\end{tabular} \\
+	\\
+	\textbf{Satz von Bayes:}\\
+	\[P(A_k|B) = \frac{P(A_k)P(B|A_k)}{\sum_{i}^{}P(A_i)P(B|A_i)}\]\\
+	\\
+	\(P(B|NG) = \frac{P(B)P(NB|B)}{P(B)P(NB|B) + P(B^c)P(NB|B^c)} = \frac{P(B)P(NB|B)}{P(B)P(NB|B) + P(G)P(NB|G)} = \frac{\frac{1}{10}*\frac{9}{10}}{\frac{1}{10}*\frac{9}{10} + \frac{1}{10}*\frac{9}{10}} \) \\
+	
+	\newpage
+	\section*{8)}
+	Bei einem Multiple-Choice-Test werden 20 Fragen mit jeweils 5 Antworten gestellt, von denen nur eine richtig ist. Die Noten ergeben sich durch
+  	\begin{itemize}
+  		\item 10-12 Punkte: genügend
+  		\item 13-15 Punkte: befriedigend
+  		\item 16-18 Punkte: gut
+  		\item 19-20 Punkte: sehr gut
+  	\end{itemize}
+  	Wie groß sind die Wahrscheinlichkeiten für diese Noten, wenn ein Student bzw. eine Studentin nichts lernt und die Antworten zufällig rät? Wie groß ist seine bzw. ihre Wahrscheinlichkeit, bei höchstens dreimaligem Antreten eine positive Beurteilung zu erhalten?\\
+  	\\
+  	\textbf{Satz 1.12:}\\
+  	\[P\{X=k\} = \binom{n}{k} * p^k * q^{n-k} \]
+  	\begin{align*}
+  		& \textbf{genügend:} \\
+  		& P(X=10) = \binom{20}{10} * 0,2^{10} * 0,8^{10} + \\
+  		& P(X=11) = \binom{20}{11} * 0,2^{11} * 0,8^{9} + \\
+  		& P(X=12) = \binom{20}{12} * 0,2^{12} * 0,8^{8} = 0,0025797 \approx 0,25797\%
+  		\\
+  		& \textbf{befriedigend:} \\
+  		& P(X=13) = \binom{20}{13} * 0,2^{13} * 0,8^{7} + \\
+  		& P(X=14) = \binom{20}{14} * 0,2^{14} * 0,8^{6} + \\
+  		& P(X=15) = \binom{20}{15} * 0,2^{15} * 0,8^{5} = 0,00001514903 \approx 0,0015\%
+  		\\
+  		& \textbf{gut:} \\
+  		& P(X=16) = \binom{20}{16} * 0,2^{16} * 0,8^{4} + \\
+  		& P(X=17) = \binom{20}{17} * 0,2^{17} * 0,8^{3} + \\
+  		& P(X=18) = \binom{20}{18} * 0,2^{18} * 0,8^{2} = 0,000000013802 \approx 0,00000138\%
+  		\\
+  		& \textbf{sehr gut:} \\
+  		& P(X=19) = \binom{20}{19} * 0,2^{19} * 0,8^{1} + \\
+  		& P(X=20) = \binom{20}{20} * 0,2^{20} * 0,8^{0} = 0,0000000000008493466 \approx 0,0000000000849\%
+  	\end{align*}
+  	\\
+  	1.Antritt positiv:\\
+  	P(genügend)+P(befriedigend)+P(gut)+P(sehr gut) = 0,0025948628328493466\\
+  	\\
+  	bei höchstens dreimaligen Antreten einmal postiv:\\
+  	\(3* 0,0025948628328493466 = 0,0077845884985480398 \approx 0,778458\% \)
+  	
+  	
+  	
+\end{document}
