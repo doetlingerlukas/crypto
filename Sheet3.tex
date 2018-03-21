@@ -260,4 +260,13 @@
     \\
     Schnitt: $\{2, 6, 8, 9\}$
 
+    \begin{align*}
+      \text{Wiederholungen}\ r \geq \frac{-log_{10}(p)}{-log(1 - \frac{2}{n \cdot (n - 1)})} \quad\dots\quad & n = \text{Knoten} \\
+      & p = \text{Fehlerwahrscheinlichkeit}
+    \end{align*}
+    \begin{align*}
+      \frac{-log_{10}(0,000 000 001)}{-log_{10}(1 - \frac{2}{6 \cdot (6 - 1)})} = \frac{9}{-log(0,9\dot{3})} \approx 300,37 = r
+    \end{align*}
+
+    Mehr oder genau 301 Wiederholungen garantieren einen minimalen Schnitt.
 \end{document}
