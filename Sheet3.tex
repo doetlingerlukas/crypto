@@ -18,7 +18,7 @@
 	\maketitle
 
 	\section*{7)}
-	
+
 	In einer Stadt sind 90\% aller Taxis grün und der Rest blau. Bei einem Unfall mit Fahrerflucht war das Fahrzeug laut einem Augenzeugen ein blaues Taxi. Die Polizei nimmt an, dass der Augenzeuge ehrlich aussagt. Zur Zeit des Unfalls war es aber dunkel, und man weiss aus Erfahrung, dass unter diesen Verhältnissen Augenzeugen in einem von zehn Fällen grüne Taxis als blau beschreiben und umgekehrt. Wie groß ist die Wahrscheinlichkeit, dass das Unfall-Taxi wirklich blau war?\\
 	\newline
 	\begin{tabular}{cc}
@@ -133,5 +133,40 @@
 			\draw (0,0) to[bend right] (0,2) node[right=0.4cm, yshift=-1cm] {8};
 			\node at (0.1, 1) {4};
 		\end{tikzpicture}
-		Schnitt: $\{4, 6, 8 \}$
+		Schnitt: $\{4, 6, 8 \}$ \\[22pt]
+		2. Durchgang: Ausgewählte Kanten $\{6, 9, 3, 8\}$ \\
+		\begin{tikzpicture}
+			\draw (2.5cm, 0cm) node[above=2pt, xshift=-1.1cm] {8} -- (0cm, 2.5cm) node[right=2.2cm, yshift=-1cm] {3} -- (4cm, 0cm) node[above=2pt, xshift=-1cm] {9} -- cycle;
+			\draw (0cm, 0cm) node[below=4pt] {\{f, b\}} -- (0cm, 2.5cm) node[right=0.85cm, yshift=-1.5cm] {2} -- (2.5cm, 0cm) node[below] {d} -- cycle;
+			\draw (0cm, 2.5cm) node[above=4pt] {a} -- (4cm, 2.5cm) node[above=4pt] {c} -- (4cm, 0cm) node[below=4pt] {e};
+			\draw (0, 0) to[bend right] (4, 0) node[below=0.65cm, xshift=-1.9cm] {5};
+			\node at (-0.25, 1.25) {4};
+			\node at (4.25, 1.25) {7};
+			\node at (2, 2.85) {1};
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0cm, 0cm) node[below=4pt] {\{f, b\}} -- (0cm, 2.5cm) node[above=4pt] {a} -- (4cm, 2.5cm) node[above=4pt] {c} -- (4cm, 0cm) node[below=4pt] {\{d, e\}} -- (0, 0);
+			\draw (0, 0) to[bend right] (4, 0) node[below=0.65cm, xshift=-1.9cm] {5};
+			\draw (0, 2.5) to[bend right] (4, 0) node[above=1.65cm, xshift=-1cm] {3};
+			\draw (0, 2.5) to[bend left] (4, 0) node[above=0.65cm, xshift=-3.2cm] {2};
+			\node at (-0.25, 1.25) {4};
+			\node at (4.25, 1.25) {7};
+			\node at (2, 2.85) {1};
+		\end{tikzpicture}
+		\\
+		\begin{tikzpicture}
+			\draw (0cm, 0cm) node[below=4pt] {\{f, b\}} -- (0cm, 2.5cm) node[above=4pt] {\{a, d, e\}} -- (4cm, 2.5cm) node[above=4pt] {c};
+			\draw (0, 2.5) to[bend right] (4, 2.5) node[below=0.65cm, xshift=-1.9cm] {7};
+			\draw (0, 0) to[bend right] (0, 2.5) node[below=1cm, xshift=0.2cm] {8};
+			\draw (0, 0) to[bend right=80] (0, 2.5) node[below=1cm, xshift=0.57cm] {5};
+			\node at (-0.25, 1.25) {4};
+			\node at (2, 2.85) {1};
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0cm, 0cm) node[below=4pt] {\{a, b, d, e, f\}} -- (4cm, 2.5cm) node[above=4pt] {c};
+			\draw (0, 0) to[bend left] (4, 2.5) node[below=0.3cm, xshift=-3cm] {7};
+			\node at (2.55, 1.2) {1};
+		\end{tikzpicture}
+		\\
+		Schnitt: $\{1, 7 \}$ \\[22pt]
 \end{document}
