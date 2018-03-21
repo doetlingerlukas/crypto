@@ -87,7 +87,21 @@
 			K = \{\{a, c\}, \{a, d\}, \{a, e\}, \{a, f\}, \{b, e\}, \{b, f\}, \{c, e\}, \{d, f\}, \{e, f\}\}
 		\end{align*}
 		\\
-		1. Durchgang: Ausgewählte Kanten $\{2, 1, 5, 7\}$ \\
+		\center
+		Ausgangszustand: \\
+		\begin{tikzpicture}
+			\draw (2.5cm, 0cm) node[above=2pt, xshift=-1.1cm] {8} -- (0cm, 2.5cm) node[right=2.2cm, yshift=-1cm] {3} -- (4.5cm, 0cm) node[above=2pt, xshift=-1cm] {9} -- cycle;
+			\draw (0cm, 0cm) node[below=4pt] {f} -- (0cm, 2.5cm) node[right=0.85cm, yshift=-1.5cm] {2} -- (2.5cm, 0cm) node[below] {d} -- cycle;
+			\draw (0cm, 2.5cm) node[above=4pt] {a} -- (4cm, 2.5cm) node[above=4pt] {c} -- (4.5cm, 0cm) node[below=4pt] {e};
+			\draw (0cm, 0cm) node[above=4pt] {a} -- (2.5cm, -2cm) node[below=4pt] {b} -- (4.5cm, 0cm) node[below=4pt] {e};
+			\node at (-0.25, 1.25) {4};
+			\node at (4.5, 1.25) {7};
+			\node at (2, 2.85) {1};
+			\node at (1.6, -1) {6};
+			\node at (3, -1) {5};
+		\end{tikzpicture}
+		\\[22pt]
+		1. Durchgang: Ausgewählte Kanten $\{2, 1, 5, 7\}$ \\[11pt]
 
 		\begin{tikzpicture}
 			\draw (0cm,0cm) node[left=4pt] {\{a, d\}} -- (4cm,0cm) node[right=4pt] {c};
@@ -133,8 +147,9 @@
 			\draw (0,0) to[bend right] (0,2) node[right=0.4cm, yshift=-1cm] {8};
 			\node at (0.1, 1) {4};
 		\end{tikzpicture}
+		\\
 		Schnitt: $\{4, 6, 8 \}$ \\[22pt]
-		2. Durchgang: Ausgewählte Kanten $\{6, 9, 3, 8\}$ \\
+		2. Durchgang: Ausgewählte Kanten $\{6, 9, 3, 8\}$ \\[11pt]
 		\begin{tikzpicture}
 			\draw (2.5cm, 0cm) node[above=2pt, xshift=-1.1cm] {8} -- (0cm, 2.5cm) node[right=2.2cm, yshift=-1cm] {3} -- (4cm, 0cm) node[above=2pt, xshift=-1cm] {9} -- cycle;
 			\draw (0cm, 0cm) node[below=4pt] {\{f, b\}} -- (0cm, 2.5cm) node[right=0.85cm, yshift=-1.5cm] {2} -- (2.5cm, 0cm) node[below] {d} -- cycle;
@@ -167,6 +182,6 @@
 			\draw (0, 0) to[bend left] (4, 2.5) node[below=0.3cm, xshift=-3cm] {7};
 			\node at (2.55, 1.2) {1};
 		\end{tikzpicture}
-		\\
+		\\[11pt]
 		Schnitt: $\{1, 7 \}$ \\[22pt]
 \end{document}
