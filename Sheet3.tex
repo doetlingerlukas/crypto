@@ -21,11 +21,13 @@
 
 	In einer Stadt sind 90\% aller Taxis grün und der Rest blau. Bei einem Unfall mit Fahrerflucht war das Fahrzeug laut einem Augenzeugen ein blaues Taxi. Die Polizei nimmt an, dass der Augenzeuge ehrlich aussagt. Zur Zeit des Unfalls war es aber dunkel, und man weiss aus Erfahrung, dass unter diesen Verhältnissen Augenzeugen in einem von zehn Fällen grüne Taxis als blau beschreiben und umgekehrt. Wie groß ist die Wahrscheinlichkeit, dass das Unfall-Taxi wirklich blau war?\\
 	\newline
+	\def\arraystretch{1.5}%
 	\begin{tabular}{cc}
 		G = Taxi ist grün & NG = Taxi wurde bei Nacht als grün erkannt \\
 		B = Taxi ist blau & NB = Taxi wurde bei Nacht als blau erkannt \\
 	\end{tabular} \\
 	\\
+	\def\arraystretch{1.5}%
 	\begin{tabular}{c|c|c}
 		\(P(G) = \frac{9}{10}\) & \(P(NG|B) = \frac{1}{10}\) & \(P(NG^c|B) = P(NB|B) = 1 - \frac{1}{10}\) \\
 		\(P(B) = \frac{1}{10}\) & \(P(NB|G) = \frac{1}{10}\) & \(P(NB^c|G) = P(NG|G) = 1 - \frac{1}{10}\) \\
@@ -75,7 +77,7 @@
   	\end{align*}
   	\\
   	1.Antritt positiv:\\
-  	P(genügend)+P(befriedigend)+P(gut)+P(sehr gut) = 0,0025948628328493466\\
+  	P(genügend) + P(befriedigend) + P(gut) + P(sehr gut) = 0,0025948628328493466\\
   	\\
   	bei höchstens dreimaligen Antreten einmal postiv:\\
   	\(3* 0,0025948628328493466 = 0,0077845884985480398 \approx 0,778458\% \)
