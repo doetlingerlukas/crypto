@@ -184,4 +184,79 @@
 		\end{tikzpicture}
 		\\[11pt]
 		Schnitt: $\{1, 7 \}$ \\[22pt]
+
+    3. Durchgang: Ausgewählte Knoten ${3, 4, 7, 5}$
+
+		\begin{tikzpicture}
+      \coordinate (ae) at (0, 0);
+      \coordinate (c)  at (4, 0);
+      \coordinate (f)  at (0, -3);
+      \coordinate (d)  at (4, -3);
+      \coordinate (b)  at (2, -5);
+
+      \node[left] at (ae) {\{a, e\}};
+      \node[right] at (c) {c};
+      \node[left] at (f) {f};
+      \node[right] at (d) {d};
+      \node[below] at (b) {b};
+
+      \draw (ae) -- node[midway, above] {1} (c);
+      \draw (ae) to[bend left] node[sloped, midway, above] {7} (c);
+      \draw (ae) to[bend left] node[sloped, midway, above] {9} (d);
+      \draw (ae) to[bend right] node[sloped, midway, below] {2} (d);
+      \draw (ae) -- node[midway, left] {4} (f);
+      \draw (f) -- node[midway, below] {1} (d);
+      \draw (f) -- node[midway, left, below] {6} (b);
+      \draw (b) -- node[midway, right, below] {5} (d);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+      \coordinate (aef) at (0, 0);
+      \coordinate (c)  at (4, 0);
+      \coordinate (b)  at (0, -3);
+      \coordinate (d)  at (4, -3);
+
+      \node[left] at (aef) {\{a, e, f\}};
+      \node[right] at (c) {c};
+      \node[left] at (b) {b};
+      \node[right] at (d) {d};
+
+      \draw (aef) -- node[midway, above] {1} (c);
+      \draw (aef) to[bend left] node[sloped, midway, above] {7} (c);
+      \draw (aef) to[bend left] node[sloped, midway, above] {9} (d);
+      \draw (aef) -- node[sloped, midway, above] {8} (d);
+      \draw (aef) to[bend right] node[sloped, midway, below] {2} (d);
+      \draw (aef) -- node[midway, left] {6} (f);
+      \draw (b) -- node[midway, below] {5} (d);
+		\end{tikzpicture}
+    \\
+		\begin{tikzpicture}
+      \coordinate (acef)  at (4, 0);
+      \coordinate (b)  at (0, -3);
+      \coordinate (d)  at (4, -3);
+
+      \node[above] at (acef) {\{a, c, e, f\}};
+      \node[left] at (b) {b};
+      \node[right] at (d) {d};
+
+      \draw (acef) to[bend left] node[midway, right] {9} (d);
+      \draw (acef) -- node[midway, right] {8} (d);
+      \draw (acef) to[bend right] node[midway, left] {2} (d);
+      \draw (b) -- node[midway, above] {6} (acef);
+      \draw (b) -- node[midway, below] {5} (d);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+      \coordinate (acef)  at (4, 0);
+      \coordinate (bd)  at (0, -3);
+
+      \node[above right] at (acef) {\{a, c, e, f\}};
+      \node[below] at (bd) {\{b, d\}};
+
+      \draw[bend right=60] (acef) to node[midway, above left] {6} (bd);
+      \draw[bend right=20]  (acef) to node[midway, above left] {2} (bd);
+      \draw (acef) -- node[midway, below right] {8} (bd);
+      \draw (acef) to[bend left] node[midway, below right] {9} (bd);
+		\end{tikzpicture}
+    \\
+    Schritt: $\{2, 6, 8, 9\}$
+
 \end{document}
