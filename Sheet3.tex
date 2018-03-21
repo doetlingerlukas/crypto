@@ -6,13 +6,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{listings}
-\usepackage{amsmath}
 \usepackage{ulem}
 \usepackage{amsthm}
-
 \usepackage{tikz}
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
 \lstset{language=MatLab}
 \author{}
 
@@ -20,25 +17,24 @@
 	\title{InformationsTheorie und Kryptologie: 3.Blatt für 22.3.2018}
 	\maketitle
 
-	
 	\section*{7)}
 	In einer Stadt sind 90\% aller Taxis grün und der Rest blau. Bei einem Unfall mit Fahrerflucht war das Fahrzeug laut einem Augenzeugen ein blaues Taxi. Die Polizei nimmt an, dass der Augenzeuge ehrlich aussagt. Zur Zeit des Unfalls war es aber dunkel, und man weiss aus Erfahrung, dass unter diesen Verhältnissen Augenzeugen in einem von zehn Fällen grüne Taxis als blau beschreiben und umgekehrt. Wie groß ist die Wahrscheinlichkeit, dass das Unfall-Taxi wirklich blau war?\\
 	\\
-	\begin{tabular}{cc}		 
-		G = Taxi ist grün & NG = Taxi wurde bei Nacht als grün erkannt \\ 		 
-		B = Taxi ist blau & NB = Taxi wurde bei Nacht als blau erkannt \\ 		 
+	\begin{tabular}{cc}
+		G = Taxi ist grün & NG = Taxi wurde bei Nacht als grün erkannt \\
+		B = Taxi ist blau & NB = Taxi wurde bei Nacht als blau erkannt \\
 	\end{tabular} \\
 	\\
-	\begin{tabular}{c|c|c}		 
-		\(P(G) = \frac{9}{10}\) & \(P(NG|B) = \frac{1}{10}\) & \(P(NG^c|B) = P(NB|B) = 1 - \frac{1}{10}\) \\ 		 
-		\(P(B) = \frac{1}{10}\) & \(P(NB|G) = \frac{1}{10}\) & \(P(NB^c|G) = P(NG|G) = 1 - \frac{1}{10}\) \\ 		 
+	\begin{tabular}{c|c|c}
+		\(P(G) = \frac{9}{10}\) & \(P(NG|B) = \frac{1}{10}\) & \(P(NG^c|B) = P(NB|B) = 1 - \frac{1}{10}\) \\
+		\(P(B) = \frac{1}{10}\) & \(P(NB|G) = \frac{1}{10}\) & \(P(NB^c|G) = P(NG|G) = 1 - \frac{1}{10}\) \\
 	\end{tabular} \\
 	\\
 	\textbf{Satz von Bayes:}\\
 	\[P(A_k|B) = \frac{P(A_k)P(B|A_k)}{\sum_{i}^{}P(A_i)P(B|A_i)}\]\\
 	\\
 	\(P(B|NG) = \frac{P(B)P(NB|B)}{P(B)P(NB|B) + P(B^c)P(NB|B^c)} = \frac{P(B)P(NB|B)}{P(B)P(NB|B) + P(G)P(NB|G)} = \frac{\frac{1}{10}*\frac{9}{10}}{\frac{1}{10}*\frac{9}{10} + \frac{1}{10}*\frac{9}{10}} \) \\
-	
+
 	\newpage
 	\section*{8)}
 	Bei einem Multiple-Choice-Test werden 20 Fragen mit jeweils 5 Antworten gestellt, von denen nur eine richtig ist. Die Noten ergeben sich durch
@@ -78,7 +74,43 @@
   	\\
   	bei höchstens dreimaligen Antreten einmal postiv:\\
   	\(3* 0,0025948628328493466 = 0,0077845884985480398 \approx 0,778458\% \)
-  	
-  	
-  	
+
+		\newpage
+		\section*{9)}
+
+		\begin{align*}
+			K = \{\{a, c\}, \{a, d\}, \{a, e\}, \{a, f\}, \{b, e\}, \{b, f\}, \{c, e\}, \{d, f\}, \{e, f\}\}
+		\end{align*}
+		\\
+		1. Durchgang: Ausgewählte Kanten $\{2, 1, 5, 7\}$ \\
+
+		\begin{tikzpicture}
+			\draw (0cm,0cm) node[left=4pt] {\{a, d\}} -- (4cm,0cm) node[right=4pt] {c};
+			\draw (4cm,0cm) node[above,xshift=-2cm] {1} -- (4cm,-2cm) node[right=4pt] {e};
+			\draw (0cm,0cm) node[left,yshift=-1cm] {4} -- (4cm,-2cm) node[right=4pt, yshift=1cm] {7};
+			\draw (0cm,0cm) -- (0cm,-2cm) node[left=4pt] {f};
+			\draw (0cm,-2cm) node[below=0.65cm, xshift=0.6cm] {6} -- (2cm,-3.5cm) node[below=4pt] {b};
+			\draw (4cm,-2cm) node[right=4pt, yshift=1.3cm, xshift=-2.1cm] {3} -- (2cm,-3.5cm) node[right=29pt, yshift=0.6cm] {5};
+			\draw (0,0) to[bend left] (0,-2) node[right=8pt, yshift=0.9cm] {8};
+			\draw (0,0) to[bend right] (4,-2) node[left=2.1cm] {9};
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0cm,0cm) node[left=4pt] {\{a, c, d\}};
+			\draw (0,0) node[right=2.2cm] {7} to[bend left] (4,-2);
+			\draw (0cm,0cm) node[left,yshift=-1cm] {4} -- (4cm,-2cm);
+			\draw (0cm,0cm) -- (0cm,-2cm) node[left=4pt] {f};
+			\draw (0cm,-2cm) node[below=0.65cm, xshift=0.6cm] {6} -- (2cm,-3.5cm) node[below=4pt] {b};
+			\draw (4cm,-2cm) node[right=4pt, yshift=1.3cm, xshift=-2.1cm] {3} -- (2cm,-3.5cm) node[right=29pt, yshift=0.6cm] {5};
+			\draw (0,0) to[bend left] (0,-2) node[right=8pt, yshift=0.9cm] {8};
+			\draw (0,0) to[bend right] (4,-2) node[left=2.1cm] {9};
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0cm,0cm) node[left=4pt] {\{a, d, c\}};
+			\draw (0,0) node[right=2.2cm] {7} to[bend left] (4,-2);
+			\draw (0cm,0cm) node[left,yshift=-1cm] {4} -- (4cm,-2cm);
+			\draw (0cm,0cm) -- (0cm,-2cm) node[left=4pt] {f};
+			\draw (0cm,-2cm) node[below=8pt, xshift=1.6cm] {6} -- (4cm,-2cm) node[below=4pt] {\{b, e\}};
+			\draw (0,0) to[bend left] (0,-2) node[right=8pt, yshift=0.9cm] {8};
+			\draw (0,0) to[bend right] (4,-2) node[left=2.2cm, yshift=0.2cm] {9};
+		\end{tikzpicture}
 \end{document}
