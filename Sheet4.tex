@@ -9,6 +9,7 @@
 \usepackage{ulem}
 \usepackage{amsthm}
 \usepackage{tikz}
+\usepackage{wasysym}
 
 \lstset{language=MatLab}
 \author{}
@@ -83,6 +84,37 @@
       \begin{itemize}
       	\item Extra Rechenaufwand bei der Bestimmung des Pivots.
       \end{itemize}
-      
+  
+  \newpage
+  \section*{12)}
+  
+    Wie groß ist die Wahrscheinlichkeit, dass unter 500 Menschen mindestens einer medial begabt ist. Ein Mensch gilt als medial begabt, wenn er beim Erraten der Ausgänge von 10 Münzwürfen maximal einen Fehler macht.\\
+    \newline
+    \textbf{Binomialverteilung:} $ P_{n,m} = \binom{n}{m} * p^m * (1-p)^{n-m} $ \\
+    \newline
+    Wahrscheinlichkeit mindestens 9 von 10 Münzwurfausgänge zu Erraten, wobei T einen erratenen Ausgang bezeichnet:
+    \begin{equation}
+      \begin{split}
+        P\{ \# T \geq 9 \} & = \binom{10}{9} * (\frac{1}{2})^9 * (\frac{1}{2})^{10-9} \\
+        & + \binom{10}{10} * (\frac{1}{2})^{10} * (\frac{1}{2})^{10-10} \\
+        & = \binom{10}{9} * (\frac{1}{2})^{10} + \binom{10}{10} * (\frac{1}{2})^{10} \\
+        & = 0.009765 \approx 0.98\% (\approx 9.77 \permil )
+      \end{split}
+    \end{equation}
+    Wahrscheinlichkeit, dass keiner von 500 Menschen medial begabt ist:
+    \begin{equation}
+      \begin{split}
+        P\{ \# M_{medial\_ begabt} = 0 \} & = \binom{500}{0} * (0.0009765)^{500} \\
+        & = 0.007396 \approx 0.74\% (\approx 7.4 \permil )
+      \end{split}
+    \end{equation}
+    Somit is die Wahrscheinlichkeit, dass mindestens einer von 500 Menschen medial begabt ist:
+    \begin{equation}
+      \begin{split}
+        P\{ \# M_{medial\_ begabt} > 0 \} & = 1 - P\{ \# M_{medial\_ begabt} = 0 \} \\
+        & = 99.26\% 
+      \end{split}
+    \end{equation}
+    Daher ist mit \textbf{99.26}\% Wahrscheinlichkeit einer von 500 Personen medial begabt.
 	
 \end{document}
