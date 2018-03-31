@@ -17,13 +17,13 @@
 \begin{document}
   \title{InformationsTheorie und Kryptologie: 4.Blatt für 12.4.2018}
   \maketitle
-  
+
   \section*{11)}
-  
+
     Quick-Sort in der \textit{Median-of-Three} Variante wählt zufällig 3 Werte aus der zu sortierenden Menge aus. Der Median dieser Werte wird als Pivot gewählt.\\
-    
+
     \subsection*{a)}
-      
+
       Die Wahrscheinlichkeit, dass M der \textit{k-te} Wert in der zu sortierenden menge S ist, setzt sich aus drei möglichen Fällen zusammen:
       \begin{itemize}
       	\item Alle drei gezogenen Zahlen sind gleich.
@@ -65,17 +65,31 @@
       	  & = \frac{6*k*(n-1-k) + 3*n - 2}{n^3}
       	\end{split}
       \end{equation}
-      
+
     \subsection*{b)}
-      
+    \begin{tabular}{lr}
+      \begin{tikzpicture}
+        \draw[->] (-0.2,0) -- (5.5,0) node[right] {$k$};
+        \draw[->] (0,-0.2) -- (0,4.2) node[above] {$P(k)$};
+        \draw (0,0) to[bend left= 80] (5.5,0);
+        \node at (0.0, -0.5) {\scriptsize 0};
+        \node at (5.5, -0.5) {\scriptsize $n - 1$};
+        \node at (2.75, -1.2) {Median-of-Three Quick-Sort};
+      \end{tikzpicture}
+      &
       \begin{tikzpicture}
       	\draw[->] (-0.2,0) -- (5.5,0) node[right] {$k$};
       	\draw[->] (0,-0.2) -- (0,4.2) node[above] {$P(k)$};
-      	\draw[scale=1,domain=0:5.5,smooth,variable=\x,red] plot ({\x},{1});
+        \draw[scale=1,domain=0:5.5,smooth,variable=\x,red] plot ({\x},{1});
+        \node at (-0.5, 1) {$\frac{1}{2}$};
+        \node at (0.0, -0.5) {\scriptsize 0};
+        \node at (5.5, -0.5) {\scriptsize $n - 1$};
+        \node at (2.75, -1.2) {Standard Quick-Sort};
       \end{tikzpicture}
-      
+    \end{tabular}
+
     \subsection*{c)}
-    
+
       \textbf{Vorteile:}
       \begin{itemize}
       	\item Bessere Performance, da die Wahrscheinlichkeit ein optimales Pivot zu wählen viel größer ist als beim regulären \textit{Quick-Sort}.
@@ -84,10 +98,10 @@
       \begin{itemize}
       	\item Extra Rechenaufwand bei der Bestimmung des Pivots.
       \end{itemize}
-  
+
   \newpage
   \section*{12)}
-  
+
     Wie groß ist die Wahrscheinlichkeit, dass unter 500 Menschen mindestens einer medial begabt ist. Ein Mensch gilt als medial begabt, wenn er beim Erraten der Ausgänge von 10 Münzwürfen maximal einen Fehler macht.\\
     \newline
     \textbf{Binomialverteilung:} $ P_{n,m} = \binom{n}{m} * p^m * (1-p)^{n-m} $ \\
@@ -112,9 +126,9 @@
     \begin{equation}
       \begin{split}
         P\{ \# M_{medial\_ begabt} > 0 \} & = 1 - P\{ \# M_{medial\_ begabt} = 0 \} \\
-        & = 99.26\% 
+        & = 99.26\%
       \end{split}
     \end{equation}
     Daher ist mit \textbf{99.26}\% Wahrscheinlichkeit einer von 500 Personen medial begabt.
-	
+
 \end{document}
