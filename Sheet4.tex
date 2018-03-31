@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[ngerman]{babel}
+\usepackage[utf8x]{inputenx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+
+\lstset{language=MatLab}
+\author{}
+
+\begin{document}
+  \title{InformationsTheorie und Kryptologie: 4.Blatt für 12.4.2018}
+  \maketitle
+  
+  \section*{11)}
+  
+    Quick-Sort in der \textit{Median-of-Three} Variante wählt zufällig 3 Werte aus der zu sortierenden Menge aus. Der Median dieser Werte wird als Pivot gewählt.\\
+    
+    \subsection*{a)}
+      
+      Die Wahrscheinlichkeit, dass M der \textit{k-te} Wert in der zu sortierenden menge S ist, setzt sich aus drei möglichen Fällen zusammen:
+      \begin{itemize}
+      	\item Alle drei gezogenen Zahlen sind gleich.
+      	\item Zwei der gezogenen Zahlen sind gleich.
+      	\item Die drei gezogenen Zahlen sind verschieden.
+      \end{itemize}
+      Daraus ergibt sich:
+      \begin{equation} \label{eq1}
+      	\begin{split}
+      	  P\{ M=s_k \} = & P\{ M=s_k , X_1 =X_2 =X_3 \} \\
+      	  & + 3*P\{ M=s_k , X_1 < X_2 < X_3 \}\\
+      	  & + 6*P\{ M=s_k , X_1 < X_2 < X_3 \}
+      	  \end{split}
+      \end{equation}
+      \begin{equation} \label{eq2}
+        \begin{split}
+          P\{ M=s_k , X_1 =X_2 =X_3 \} & = P\{X_1 =s_k , X_2 =s_k , X_3 =s_k \}\\
+          & = \frac{1}{n} * \frac{1}{n} * \frac{1}{n} = \frac{1}{n^3}
+        \end{split}
+      \end{equation}
+      \begin{equation} \label{eq3}
+      	\begin{split}
+      	  P\{ M=s_k , X_1 \neq X_2 =X_3 \} & = P\{X_1 \neq s_k , X_2 =s_k , X_3 =s_k \}\\
+      	  & = \frac{n-1}{n} * \frac{1}{n} * \frac{1}{n} = \frac{n-1}{n^3}
+      	\end{split}
+      \end{equation}
+      \begin{equation} \label{eq4}
+      	\begin{split}
+      	  P\{ M=s_k , X_1 < X_2 < X_3 \} & = P\{X_1 < s_k , X_2 =s_k , X_3 < s_k \}\\
+      	  & = \frac{k}{n} * \frac{1}{n} * \frac{n-1-k}{n} = \frac{k*(n-1-k)}{n^3}
+      	\end{split}
+      \end{equation}
+      \newpage
+      Wenn man nun die Ergebnisse der Gleichungen \ref{eq2}, \ref{eq3} und \ref{eq4} in die Gleichung \ref{eq1} einsetzt, erhält man folgendes Ergebnis:
+      \begin{equation} \label{eq5}
+      	\begin{split}
+      	  P\{ M=s_k \} & = \frac{1}{n^3} + 3*\frac{n-1}{n^3} + 6*\frac{k*(n-1-k
+      	  	)}{n^3} \\
+      	  & = \frac{6*k*(n-1-k) + 3*n - 2}{n^3}
+      	\end{split}
+      \end{equation}
+      
+	
+\end{document}
