@@ -65,5 +65,24 @@
       	\end{split}
       \end{equation}
       
+    \subsection*{b)}
+      
+      \begin{tikzpicture}
+      	\draw[->] (-0.2,0) -- (5.5,0) node[right] {$k$};
+      	\draw[->] (0,-0.2) -- (0,4.2) node[above] {$P(k)$};
+      	\draw[scale=1,domain=0:5.5,smooth,variable=\x,red] plot ({\x},{1});
+      \end{tikzpicture}
+      
+    \subsection*{c)}
+    
+      \textbf{Vorteile:}
+      \begin{itemize}
+      	\item Bessere Performance, da die Wahrscheinlichkeit ein optimales Pivot zu wählen viel größer ist als beim regulären \textit{Quick-Sort}.
+      \end{itemize}
+      \textbf{Nachteile:}
+      \begin{itemize}
+      	\item Extra Rechenaufwand bei der Bestimmung des Pivots.
+      \end{itemize}
+      
 	
 \end{document}
