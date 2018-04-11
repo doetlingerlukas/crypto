@@ -18,7 +18,10 @@ def miller_rabin(n)
   puts "e = #{e}, u = #{u}"
 
   Hash[(1..(n - 1)).map { |x|
-    next [x, :prime] if (e - 1).downto(0).any? { |i| (x**(2**i * u)) % n == -1 % n }
+    next [x, :prime] if (e - 1).downto(0).any? { |i|
+      (x**(2**i * u)) % n == -1 % n
+    }
+
     next [x, :prime] if (x**u) % n == 1 % n
     [x, :non_prime]
   }]

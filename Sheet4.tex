@@ -5,16 +5,12 @@
 \usepackage[utf8x]{inputenx}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage[procnames]{listings}
 \usepackage{listings}
 \usepackage{ulem}
 \usepackage{amsthm}
 \usepackage{tikz}
 \usepackage{wasysym}
-
-\lstset{
-  basicstyle=\ttfamily,
-  breaklines=true,
-}
 
 \author{}
 
@@ -23,6 +19,21 @@
   \maketitle
 
   \section*{10)}
+
+  \definecolor{red}{HTML}{f92672}
+  \definecolor{green}{HTML}{009900}
+
+  \lstloadlanguages{Ruby}
+  \lstset{%
+    basicstyle = \ttfamily\color{black},
+    commentstyle = \ttfamily\color{gray},
+    keywordstyle = \ttfamily\color{red},
+    stringstyle = \color{orange},
+    breaklines = true,
+    showstringspaces = false,
+    procnamekeys={def},
+    procnamestyle=\color{green}
+  }
 
   \lstinputlisting[language=Ruby]{miller_rabin.rb}
 
@@ -152,7 +163,7 @@
         & = 0.007396 \approx 0.74\% (\approx 7.4 \permil )
       \end{split}
     \end{equation}
-    Somit is die Wahrscheinlichkeit, dass mindestens einer von 500 Menschen medial begabt ist:
+    Somit ist die Wahrscheinlichkeit, dass mindestens einer von 500 Menschen medial begabt ist:
     \begin{equation}
       \begin{split}
         P\{ \# M_{medial\_ begabt} > 0 \} & = 1 - P\{ \# M_{medial\_ begabt} = 0 \} \\
