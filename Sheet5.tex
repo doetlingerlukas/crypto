@@ -13,5 +13,26 @@
   \lstinputlisting[language=Rust]{sheet_5/src/main.rs}
 
   \section*{14)}
+
+  \begin{align*}
+    & H(7/24, 10/24, 7/24) &=\ &2 \cdot H(7/24) + H(10/24) &\approx&\ 1,563202089984486 \\
+    & H(6/24, 12/24, 6/24) &=\ &2 \cdot H(6/24) + H(12/24) &=&\       1,5 \\
+    & H(8/24, 8/24, 8/24)  &=\ &3 \cdot H(8/24)            &\approx&\ 1,584962500721156
+    \\
+    \\
+    & H(4/8, 0/8, 4/8) &=\ &2 \cdot H(4/8) + H(0/8)        &=&\       2 \cdot H(4/8) + 0 \cdot -\infty = \text{undefiniert} \\
+    & H(2/8, 4/8, 2/8) &=\ &2 \cdot H(2/8) + H(4/8)        &=&\       1,5 \\
+    & H(3/8, 2/8, 3/8) &=\ &2 \cdot H(3/8) + H(2/8)        &\approx&\ 1,561278124459133
+  \end{align*}
+
+  Maximalwert bei drei Argumenten ($r := 3$):
+
+  \begin{align*}
+    H(\frac{1}{r}, \frac{1}{r}, \frac{1}{r}) &= ld(r) \\
+    H(\frac{1}{3}, \frac{1}{3}, \frac{1}{3}) &= ld(3) \approx 1,584962500721156
+  \end{align*}
+
+  Das Maximum ist bei drei Werten eindeutig, da das Maximum bei einem festen $r$ bei $H(\frac{1}{r},\frac{1}{r},\dots,\frac{1}{r})$ liegt.
+
   \section*{15)}
 \end{document}
