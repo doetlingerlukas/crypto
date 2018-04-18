@@ -8,3 +8,8 @@
 *.watcher_pid
 *.fls
 *.fdb_latexmk
+
+
+# Rust
+
+sheet_5/target

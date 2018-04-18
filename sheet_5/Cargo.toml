@@ -1,0 +1,7 @@
+[package]
+name = "sheet_5"
+version = "0.1.0"
+authors = ["Markus Reiter <me@reitermark.us>"]
+
+[dependencies]
+GSL = "0.4"
