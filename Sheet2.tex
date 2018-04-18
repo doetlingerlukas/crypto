@@ -1,20 +1,14 @@
+% !TEX TS-program = xelatex
+%
 \documentclass[11pt,a4paper]{article}
 
-\usepackage{amsmath}
-\usepackage[ngerman]{babel}
-\usepackage[utf8x]{inputenx}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{listings}
+\input{settings.tex}
 
-\usepackage{tikz}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
-\lstset{language=MatLab}
-\author{}
 
 \begin{document}
-	\title{InformationsTheorie und Kryptologie: 2.Blatt für 15.3.2018}
+	\title{Informationstheorie und Kryptologie: 2. Blatt für 15.3.2018}
 	\maketitle
 
 	\section*{4)}
@@ -122,7 +116,7 @@
 	c) P(Fünfer)= \( \frac{\binom{6}{5} * \binom{39}{1}}{\binom{45}{6}}=\frac{6*39}{8.145.060}=0.00002873\)\\
 	d) P(Sechser)= \( \frac{\binom{6}{6} * 1}{\binom{45}{6}}=\frac{1}{8.145.060}=0.000000122773\)\\\\
 	PDF für berechnung:\\
-	\begin{lstlisting}[frame=single]
+	\begin{lstlisting}[language=MatLab,frame=single]
 		p3= hygepdf(3,45,6,6)
 		p4= hygepdf(4,45,6,6)
 		p5= hygepdf(5,45,6,6)

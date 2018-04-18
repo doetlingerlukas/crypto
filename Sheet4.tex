@@ -2,19 +2,10 @@
 %
 \documentclass[11pt,a4paper]{article}
 
-\usepackage{amsmath}
-\usepackage[ngerman]{babel}
-\usepackage[procnames]{listings}
-\usepackage{listings}
-\usepackage{ulem}
-\usepackage{amsthm}
-\usepackage{tikz}
-\usepackage{wasysym}
-
-\author{}
+\input{settings.tex}
 
 \begin{document}
-  \title{InformationsTheorie und Kryptologie: 4.Blatt für 12.4.2018}
+  \title{InformationsTheorie und Kryptologie: 4. Blatt für 12.4.2018}
   \maketitle
 
   \section*{10)}
@@ -22,17 +13,6 @@
   \definecolor{red}{HTML}{f92672}
   \definecolor{green}{HTML}{009900}
 
-  \lstloadlanguages{Ruby}
-  \lstset{%
-    basicstyle = \ttfamily\color{black},
-    commentstyle = \ttfamily\color{gray},
-    keywordstyle = \ttfamily\color{red},
-    stringstyle = \color{orange},
-    breaklines = true,
-    showstringspaces = false,
-    procnamekeys={def},
-    procnamestyle=\color{green}
-  }
 
   \lstinputlisting[language=Ruby]{miller_rabin.rb}
 
