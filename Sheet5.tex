@@ -36,64 +36,74 @@
 
   \section*{15)}
 
+
   \begin{tikzpicture}[
-    every node/.style={scale=0.55},
+    font=\tiny,
     level 1/.style={sibling distance=4.5cm},
     level 2/.style={sibling distance=1.5cm},
     level 3/.style={sibling distance=0.5cm},
-    level distance=.5cm,
+    level distance=1.25cm,
   ]
-    \coordinate
-      child { node [circle,draw] {<}
-        child { node [circle,draw] {<}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+    \tikzset{rel/.style={fill=white, circle, scale=.75,inner sep=1}}
+
+    \node[] {$\{1,2,3,4\} \lesseqqgtr \{5,6,7,8\}$}
+      child { node[] {$\{\textbf{5},\textbf{6},1\} \lesseqqgtr \{\textbf{7},\textbf{8},2\}$}
+        child { node[] {$\{7\} \lesseqqgtr \{8\}$}
+          child { node[] {\textbf{8}} edge from parent node[rel] {<} }
+          child { node[] {1} edge from parent node[rel] {=} }
+          child { node[] {\textbf{7}} edge from parent node[rel] {>} }
+          edge from parent node[rel] {<}
         }
-        child { node [circle,draw] {=}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+        child { node[] {$\{3\} \lesseqqgtr \{4\}$}
+          child { node[] {3} edge from parent node[rel] {<} }
+          child { node[] {4} edge from parent node[rel] {>} }
+          edge from parent node[rel] {=}
         }
-        child { node [circle,draw] {>}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+        child { node[] {$\{5\} \lesseqqgtr \{6\}$}
+          child { node[] {\textbf{6}} edge from parent node[rel] {<} }
+          child { node[] {2} edge from parent node[rel] {=} }
+          child { node[] {\textbf{5}} edge from parent node[rel] {>} }
+          edge from parent node[rel] {>}
         }
+        edge from parent node[rel] {<}
       }
-      child { node [circle,draw] {=}
-        child { node [circle,draw] {<}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+      child { node[] {$\{9,10,11\} \lesseqqgtr \{1,2,3\}$}
+        child { node[] {$\{9\} \lesseqqgtr \{10\}$}
+          child { node[] {9} edge from parent node[rel] {<} }
+          child { node[] {11} edge from parent node[rel] {=} }
+          child { node[] {10} edge from parent node[rel] {>} }
+          edge from parent node[rel] {<}
         }
-        child { node [circle,draw] {=}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+        child { node[] {12}
+          edge from parent node[rel] {=}
         }
-        child { node [circle,draw] {>}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+        child { node[] {$\{9\} \lesseqqgtr \{10\}$}
+          child { node[] {10} edge from parent node[rel] {<} }
+          child { node[] {11} edge from parent node[rel] {=} }
+          child { node[] {9} edge from parent node[rel] {>} }
+          edge from parent node[rel] {>}
         }
+        edge from parent node[rel] {=}
       }
-      child { node [circle,draw] {>}
-        child { node [circle,draw] {<}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+      child { node[] {$\{\textbf{1},\textbf{2},5\} \lesseqqgtr \{\textbf{3},\textbf{4},6\}$}
+        child { node[] {$\{3\} \lesseqqgtr \{4\}$}
+          child { node[] {\textbf{4}} edge from parent node[rel] {<} }
+          child { node[] {5} edge from parent node[rel] {=} }
+          child { node[] {\textbf{3}} edge from parent node[rel] {>} }
+          edge from parent node[rel] {<}
         }
-        child { node [circle,draw] {=}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+        child { node[] {$\{7\} \lesseqqgtr \{8\}$}
+          child { node[] {7} edge from parent node[rel] {<} }
+          child { node[] {8} edge from parent node[rel] {>} }
+          edge from parent node[rel] {=}
         }
-        child { node [circle,draw] {>}
-          child { node [circle,draw] {<} }
-          child { node [circle,draw] {=} }
-          child { node [circle,draw] {>} }
+        child { node[] {$\{1\} \lesseqqgtr \{2\}$}
+          child { node[] {\textbf{2}} edge from parent node[rel] {<} }
+          child { node[] {6} edge from parent node[rel] {=} }
+          child { node[] {\textbf{1}} edge from parent node[rel] {>} }
+          edge from parent node[rel] {>}
         }
+        edge from parent node[rel] {>}
       }
     ;
   \end{tikzpicture}
