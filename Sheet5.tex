@@ -35,4 +35,66 @@
   Das Maximum ist bei drei Werten eindeutig, da das Maximum bei einem festen $r$ bei $H(\frac{1}{r},\frac{1}{r},\dots,\frac{1}{r})$ liegt.
 
   \section*{15)}
+
+  \begin{tikzpicture}[
+    every node/.style={scale=0.55},
+    level 1/.style={sibling distance=4.5cm},
+    level 2/.style={sibling distance=1.5cm},
+    level 3/.style={sibling distance=0.5cm},
+    level distance=.5cm,
+  ]
+    \coordinate
+      child { node [circle,draw] {<}
+        child { node [circle,draw] {<}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+        child { node [circle,draw] {=}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+        child { node [circle,draw] {>}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+      }
+      child { node [circle,draw] {=}
+        child { node [circle,draw] {<}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+        child { node [circle,draw] {=}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+        child { node [circle,draw] {>}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+      }
+      child { node [circle,draw] {>}
+        child { node [circle,draw] {<}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+        child { node [circle,draw] {=}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+        child { node [circle,draw] {>}
+          child { node [circle,draw] {<} }
+          child { node [circle,draw] {=} }
+          child { node [circle,draw] {>} }
+        }
+      }
+    ;
+  \end{tikzpicture}
 \end{document}
