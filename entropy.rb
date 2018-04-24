@@ -4,6 +4,7 @@ include Math
 
 def entropy(*ps)
   -ps.map { |p_i|
+    next 0 if p_i.zero?
     p_i * log2(p_i)
   }.reduce(&:+)
 end
