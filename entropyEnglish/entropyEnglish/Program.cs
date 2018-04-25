@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 
 namespace entropyEnglish
 {
@@ -22,22 +23,31 @@ namespace entropyEnglish
 
     class Program
     {
-        internal class NgramTuple<T, K>
+        internal class NgramTuple<T>
         {
             public T Ngram { get; set; }
-            public K NgramCount { get; set; }
+            public long NgramCount { get; set; } = 0;
+
+            public NgramTuple(T ngram)
+            {
+                Ngram = ngram;
+            }
+
+            public NgramTuple(T ngram, long ngramCount)
+            {
+                Ngram = ngram;
+                NgramCount = ngramCount;
+            }
         }
 
-        private static (IEnumerable<IGrouping<string, string>> rankedNgrams, long amount) Ngrams(ref string lesMiserables, int n)
+        private static NgramTuple<IEnumerable<IGrouping<string, string>>> Ngrams(ref string lesMiserables, int n)
         {
-            var ngrams = new NgramTuple<List<string>, int>();
-            ngrams.Ngram = new List<string>();
+            var ngrams = new NgramTuple<List<string>>(new List<string>());
             var lmSplitted = lesMiserables.Split(' ');
 
             Parallel.ForEach(Partitioner.Create(0, lmSplitted.Length, lmSplitted.Length / Environment.ProcessorCount), range =>
             {
-                var ngramsInternal = new NgramTuple<List<string>, int>();
-                ngramsInternal.Ngram = new List<string>();
+                var ngramsInternal = new NgramTuple<List<string>>(new List<string>());
 
                 for (int i = range.Item1; i < range.Item2; i++)
                 {
@@ -59,10 +69,10 @@ namespace entropyEnglish
             var rankedNgrams = ngrams.Ngram.GroupBy(ngram => ngram).OrderByDescending(x => x.Count());
 
             //return tuple of ranked ngrams and amount of total ngrams
-            return (rankedNgrams.Take(10), ngrams.NgramCount);
+            return new NgramTuple<IEnumerable<IGrouping<string, string>>>(rankedNgrams.Take(10), ngrams.NgramCount);
         }
 
-        private static double EntropyFromNgrams(ref IEnumerable<IGrouping<string, string>> rankedNgrams, long total, int n)
+        private static double EntropyFromNgrams(IEnumerable<IGrouping<string, string>> rankedNgrams, long total, int n)
         {
             //map ngrams to entropy
             return rankedNgrams.Select(ng =>
@@ -90,24 +100,30 @@ namespace entropyEnglish
 
             var lesMiserables = File.ReadAllText("lesMiserables.txt");
 
-            //remove all characters that are not words or spaces 
+            //remove all characters that are not words or spaces
             lesMiserables = Regex.Replace(lesMiserables, "[^\\w ]+", "");
-            //remove all multiple spaces 
+            //remove all multiple spaces
             lesMiserables = Regex.Replace(lesMiserables, " +(?= )", "");
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
             Parallel.Invoke(() =>
             {
-                var (rankedNgrams, amount) = Ngrams(ref lesMiserables, 1);
-                Console.WriteLine($"Entropy for ngrams of size one: {EntropyFromNgrams(ref rankedNgrams, amount, 1)}.");
+                var nGramsOfSizeOne = Ngrams(ref lesMiserables, 1);
+                Console.WriteLine($"Entropy for n-grams of size one: {EntropyFromNgrams(nGramsOfSizeOne.Ngram, nGramsOfSizeOne.NgramCount, 1)}.");
             }, () =>
             {
-                var (rankedNgrams, amount) = Ngrams(ref lesMiserables, 2);
-                Console.WriteLine($"Entropy for ngrams of size two: {EntropyFromNgrams(ref rankedNgrams, amount, 2)}.");
+                var nGramsOfSizeTwo = Ngrams(ref lesMiserables, 2);
+                Console.WriteLine($"Entropy for n-grams of size two: {EntropyFromNgrams(nGramsOfSizeTwo.Ngram, nGramsOfSizeTwo.NgramCount, 2)}.");
             }, () =>
             {
-                var (rankedNgrams, amount) = Ngrams(ref lesMiserables, 3);
-                Console.WriteLine($"Entropy for ngrams of size three: {EntropyFromNgrams(ref rankedNgrams, amount, 3)}.");
+                var nGramsOfSizeThree = Ngrams(ref lesMiserables, 3);
+                Console.WriteLine($"Entropy for n-grams of size three: {EntropyFromNgrams(nGramsOfSizeThree.Ngram, nGramsOfSizeThree.NgramCount, 3)}.");
             });
+
+            stopwatch.Stop();
+            Console.WriteLine($"Completed in {stopwatch.ElapsedMilliseconds}ms");
 
             Console.ReadLine();
         }
