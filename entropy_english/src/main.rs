@@ -53,6 +53,7 @@ fn entropy(vec: &Vec<(String, usize)>) -> f64 {
 
   -vec.iter().map(|&(_, count)| {
     let p = count as f64 / n;
+    if p == 0.0 { return 0.0; }
     p * p.log2()
   }).fold(0.0, |acc, e| acc + e)
 }
