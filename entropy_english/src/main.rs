@@ -30,18 +30,6 @@ fn ngram(string: &str, n: usize) -> Vec<Vec<char>> {
   char_iter.collect::<Vec<_>>().into_iter().ngrams(n).collect()
 }
 
-fn monogram(string: &str) -> Vec<Vec<char>> {
-  ngram(string, 1)
-}
-
-fn bigram(string: &str) -> Vec<Vec<char>> {
-  ngram(string, 2)
-}
-
-fn trigram(string: &str) -> Vec<Vec<char>> {
-  ngram(string, 3)
-}
-
 fn rank_ngrams(ngrams: &Vec<Vec<char>>) -> Vec<(String, usize)> {
   ngrams.iter().map(|v| (v, 1)).into_group_map().iter()
     .map(|(k, v)|(k.into_iter().collect(), v.len()))
@@ -64,13 +52,13 @@ fn main() {
 
   let escaped_text = escape(&text);
 
-  let mono = rank_ngrams(&monogram(&escaped_text));
-  let bi   = rank_ngrams(&bigram(&escaped_text));
-  let tri  = rank_ngrams(&trigram(&escaped_text));
+  let mono = rank_ngrams(&ngram(&escaped_text, 1));
+  let bi   = rank_ngrams(&ngram(&escaped_text, 2));
+  let tri  = rank_ngrams(&ngram(&escaped_text, 3));
 
   let mono_entropy = entropy(&mono);
-  let bi_entropy = entropy(&bi);
-  let tri_entropy = entropy(&tri);
+  let bi_entropy   = entropy(&bi);
+  let tri_entropy  = entropy(&tri);
 
   println!("Monogram Entropy: {}", mono_entropy);
   for (ngram, count) in mono.into_iter().take(10) {
