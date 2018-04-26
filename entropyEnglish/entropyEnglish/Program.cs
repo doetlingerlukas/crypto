@@ -5,7 +5,6 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading.Tasks;
-using System.Collections.Concurrent;
 using System.Diagnostics;
 
 namespace entropyEnglish
@@ -40,22 +39,23 @@ namespace entropyEnglish
             }
         }
 
-        private static NgramTuple<IEnumerable<IGrouping<string, string>>> Ngrams(ref string lesMiserables, int n)
+        private static NgramTuple<IEnumerable<IGrouping<string, string>>> Ngrams(string lesMiserables, int n)
         {
             var ngrams = new NgramTuple<List<string>>(new List<string>());
-            var lmSplitted = lesMiserables.Split(' ');
 
-            Parallel.ForEach(Partitioner.Create(0, lmSplitted.Length, lmSplitted.Length / Environment.ProcessorCount), range =>
+            int size = lesMiserables.Length / Environment.ProcessorCount;
+
+            var lmSplitted = Enumerable.Range(1, Environment.ProcessorCount / 2)
+                .Select(x => lesMiserables.Substring(size * (x - 1), size * x)).ToArray();
+
+            Parallel.For(0, lmSplitted.Length, i =>
             {
                 var ngramsInternal = new NgramTuple<List<string>>(new List<string>());
 
-                for (int i = range.Item1; i < range.Item2; i++)
+                foreach (var ngram in lmSplitted[i].Ngram(n))
                 {
-                    foreach (var ngram in lmSplitted[i].Ngram(n))
-                    {
-                        ngramsInternal.Ngram.Add(ngram);
-                        ngramsInternal.NgramCount++;
-                    }
+                    ngramsInternal.Ngram.Add(ngram);
+                    ngramsInternal.NgramCount++;
                 }
 
                 lock (ngrams)
@@ -69,7 +69,7 @@ namespace entropyEnglish
             var rankedNgrams = ngrams.Ngram.GroupBy(ngram => ngram).OrderByDescending(x => x.Count());
 
             //return tuple of ranked ngrams and amount of total ngrams
-            return new NgramTuple<IEnumerable<IGrouping<string, string>>>(rankedNgrams.Take(10), ngrams.NgramCount);
+            return new NgramTuple<IEnumerable<IGrouping<string, string>>>(rankedNgrams, ngrams.NgramCount);
         }
 
         private static double EntropyFromNgrams(IEnumerable<IGrouping<string, string>> rankedNgrams, long total, int n)
@@ -105,20 +105,22 @@ namespace entropyEnglish
             //remove all multiple spaces
             lesMiserables = Regex.Replace(lesMiserables, " +(?= )", "");
 
+            Console.WriteLine("Calculating entropies...");
+
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
             Parallel.Invoke(() =>
             {
-                var nGramsOfSizeOne = Ngrams(ref lesMiserables, 1);
+                var nGramsOfSizeOne = Ngrams(lesMiserables, 1);
                 Console.WriteLine($"Entropy for n-grams of size one: {EntropyFromNgrams(nGramsOfSizeOne.Ngram, nGramsOfSizeOne.NgramCount, 1)}.");
             }, () =>
             {
-                var nGramsOfSizeTwo = Ngrams(ref lesMiserables, 2);
+                var nGramsOfSizeTwo = Ngrams(lesMiserables, 2);
                 Console.WriteLine($"Entropy for n-grams of size two: {EntropyFromNgrams(nGramsOfSizeTwo.Ngram, nGramsOfSizeTwo.NgramCount, 2)}.");
             }, () =>
             {
-                var nGramsOfSizeThree = Ngrams(ref lesMiserables, 3);
+                var nGramsOfSizeThree = Ngrams(lesMiserables, 3);
                 Console.WriteLine($"Entropy for n-grams of size three: {EntropyFromNgrams(nGramsOfSizeThree.Ngram, nGramsOfSizeThree.NgramCount, 3)}.");
             });
 
