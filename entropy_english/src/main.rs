@@ -64,26 +64,26 @@ fn main() {
 
   let escaped_text = escape(&text);
 
-  let mono = rank_ngrams(&monogram(&escaped_text));
-  let bi   = rank_ngrams(&bigram(&escaped_text));
-  let tri  = rank_ngrams(&trigram(&escaped_text));
+  let mono = rank_ngrams(&monogram(&escaped_text)).into_iter().take(10).collect();
+  let bi   = rank_ngrams(&bigram(&escaped_text)).into_iter().take(10).collect();
+  let tri  = rank_ngrams(&trigram(&escaped_text)).into_iter().take(10).collect();
 
   let mono_entropy = entropy(&mono);
   let bi_entropy = entropy(&bi);
   let tri_entropy = entropy(&tri);
 
   println!("Monogram Entropy: {}", mono_entropy);
-  for (ngram, count) in mono.into_iter().take(20) {
+  for (ngram, count) in mono {
     println!("“{}”: {}", ngram, count);
   }
 
   println!("Bigram Entropy: {}", bi_entropy);
-  for (ngram, count) in bi.into_iter().take(20) {
+  for (ngram, count) in bi {
     println!("“{}”: {}", ngram, count);
   }
 
   println!("Trigram Entropy: {}", tri_entropy);
-  for (ngram, count) in tri.into_iter().take(20) {
+  for (ngram, count) in tri {
     println!("“{}”: {}", ngram, count);
   }
 }
