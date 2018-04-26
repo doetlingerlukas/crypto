@@ -60,7 +60,7 @@ fn entropy(vec: &Vec<(String, usize)>) -> f64 {
 
 fn main() {
   let text = get("http://www.gutenberg.org/files/135/135-0.txt").expect("Could not fetch URL.")
-  .text().expect("No text found.");
+    .text().expect("No text found.");
 
   let escaped_text = escape(&text);
 
