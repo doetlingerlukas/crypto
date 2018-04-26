@@ -13,6 +13,9 @@ use regex::Regex;
 extern crate itertools;
 use itertools::Itertools;
 
+#[macro_use]
+mod benchmark;
+
 fn escape(string: &str) -> String {
   let lowercase_string = string.to_ascii_lowercase();
   let removed_non_ascii_lowercase = Regex::new(r"[^a-z ]").unwrap().replace_all(&lowercase_string, "").to_string();
