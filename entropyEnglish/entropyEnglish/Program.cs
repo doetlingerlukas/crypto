@@ -44,10 +44,10 @@ namespace entropyEnglish
         {
             var ngrams = new NgramTuple<List<string>>(new List<string>());
 
-            int size = lesMiserables.Length / Environment.ProcessorCount / 2 / 2;
+            int size = lesMiserables.Length / Environment.ProcessorCount;
 
             var lmSplitted = Enumerable.Range(1, Environment.ProcessorCount)
-                .Select(x => lesMiserables.Substring(size * (x - 1), size * x)).ToArray();
+                .Select(x => lesMiserables.Substring(size * (x - 1), size)).ToArray();
 
             Parallel.For(0, lmSplitted.Length, i =>
             {
