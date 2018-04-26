@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Text;
 
 namespace entropyEnglish
 {
@@ -16,7 +17,7 @@ namespace entropyEnglish
             int index = input.Length - n + 1;
 
             while (index-- > 0)
-                yield return input.Substring(index, n).ToLower();
+                yield return input.Substring(index, n);
         }
     }
 
@@ -43,9 +44,9 @@ namespace entropyEnglish
         {
             var ngrams = new NgramTuple<List<string>>(new List<string>());
 
-            int size = lesMiserables.Length / Environment.ProcessorCount;
+            int size = lesMiserables.Length / Environment.ProcessorCount / 2 / 2;
 
-            var lmSplitted = Enumerable.Range(1, Environment.ProcessorCount / 2)
+            var lmSplitted = Enumerable.Range(1, Environment.ProcessorCount)
                 .Select(x => lesMiserables.Substring(size * (x - 1), size * x)).ToArray();
 
             Parallel.For(0, lmSplitted.Length, i =>
@@ -101,6 +102,7 @@ namespace entropyEnglish
             var lesMiserables = File.ReadAllText("lesMiserables.txt");
 
             //remove all characters that are not words or spaces
+            lesMiserables = lesMiserables.ToLower();
             lesMiserables = Regex.Replace(lesMiserables, "[^\\w ]+", "");
             //remove all multiple spaces
             lesMiserables = Regex.Replace(lesMiserables, " +(?= )", "");
@@ -112,16 +114,40 @@ namespace entropyEnglish
 
             Parallel.Invoke(() =>
             {
+                StringBuilder sb = new StringBuilder();
                 var nGramsOfSizeOne = Ngrams(lesMiserables, 1);
-                Console.WriteLine($"Entropy for n-grams of size one: {EntropyFromNgrams(nGramsOfSizeOne.Ngram, nGramsOfSizeOne.NgramCount, 1)}.");
+                sb.AppendLine($"Entropy for n-grams of size one: {EntropyFromNgrams(nGramsOfSizeOne.Ngram, nGramsOfSizeOne.NgramCount, 1)}.");
+
+                foreach(var ngram in nGramsOfSizeOne.Ngram.Take(10))
+                {
+                    sb.AppendLine($"\"{ngram.Key}\": {ngram.Count()}");
+                }
+
+                Console.Write(sb.ToString());
             }, () =>
             {
+                StringBuilder sb = new StringBuilder();
                 var nGramsOfSizeTwo = Ngrams(lesMiserables, 2);
-                Console.WriteLine($"Entropy for n-grams of size two: {EntropyFromNgrams(nGramsOfSizeTwo.Ngram, nGramsOfSizeTwo.NgramCount, 2)}.");
+                sb.AppendLine($"Entropy for n-grams of size two: {EntropyFromNgrams(nGramsOfSizeTwo.Ngram, nGramsOfSizeTwo.NgramCount, 2)}.");
+
+                foreach (var ngram in nGramsOfSizeTwo.Ngram.Take(10))
+                {
+                    sb.AppendLine($"\"{ngram.Key}\": {ngram.Count()}");
+                }
+
+                Console.Write(sb.ToString());
             }, () =>
             {
+                StringBuilder sb = new StringBuilder();
                 var nGramsOfSizeThree = Ngrams(lesMiserables, 3);
-                Console.WriteLine($"Entropy for n-grams of size three: {EntropyFromNgrams(nGramsOfSizeThree.Ngram, nGramsOfSizeThree.NgramCount, 3)}.");
+                sb.AppendLine($"Entropy for n-grams of size three: {EntropyFromNgrams(nGramsOfSizeThree.Ngram, nGramsOfSizeThree.NgramCount, 3)}.");
+
+                foreach (var ngram in nGramsOfSizeThree.Ngram.Take(10))
+                {
+                    sb.AppendLine($"\"{ngram.Key}\": {ngram.Count()}");
+                }
+
+                Console.Write(sb.ToString());
             });
 
             stopwatch.Stop();
