@@ -32,5 +32,87 @@
     & 1 \cdot \frac{1}{2} + 2 \cdot \frac{1}{4} + 3 \cdot \frac{1}{8} + 3 \cdot \frac{1}{8} = 1.75
   \end{align*}
 
+  \newpage
+
   \section*{24)}
+
+  Wahrscheinlichkeiten: $\text{a} := \frac{1}{5}, \text{b} := \frac{1}{5}, \text{c} := \frac{3}{5}$
+
+  \subsection*{a)}
+
+  {
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{l|l|l}
+      $\text{c} = \frac{3}{5}$ &  $\text{c} = \frac{3}{5}$      &  $\text{(c, (a, b))} = 1$\\
+      $\text{a} = \frac{1}{5}$ &  $\text{(a, b)} = \frac{2}{5}$ &  \\
+      $\text{b} = \frac{1}{5}$ &
+    \end{tabular}\\
+    \\
+    \\
+    \begin{tabular}{l}
+      $\text{a} \rightarrow 10$\\
+      $\text{b} \rightarrow 11$\\
+      $\text{c} \rightarrow 0$
+    \end{tabular}\\
+  }
+  \\
+  Kompressionsrate: $(2 \cdot \frac{1}{5} + 2 \cdot \frac{1}{5} + 1 \cdot \frac{3}{5}) / 1 = 1.4$
+
+  \newpage
+
+  \subsection*{b)}
+
+  {
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{l|l|l|l}
+      $\text{cc} = \frac{9}{25}$ & $\text{cc} = \frac{9}{25}$       & $\text{cc} = \frac{9}{25}$       & $\text{cc} = \frac{9}{25}$                   \\
+      $\text{ac} = \frac{3}{25}$ & $\text{ac} = \frac{3}{25}$       & $\text{ac} = \frac{3}{25}$       & $\text{((ba, bb), (aa, ab))} = \frac{4}{25}$ \\
+      $\text{bc} = \frac{3}{25}$ & $\text{bc} = \frac{3}{25}$       & $\text{bc} = \frac{3}{25}$       & $\text{ac} = \frac{3}{25}$                   \\
+      $\text{ca} = \frac{3}{25}$ & $\text{ca} = \frac{3}{25}$       & $\text{ca} = \frac{3}{25}$       & $\text{bc} = \frac{3}{25}$                   \\
+      $\text{cb} = \frac{3}{25}$ & $\text{cb} = \frac{3}{25}$       & $\text{cb} = \frac{3}{25}$       & $\text{ca} = \frac{3}{25}$                   \\
+      $\text{aa} = \frac{1}{25}$ & $\text{(ba, bb)} = \frac{2}{25}$ & $\text{(ba, bb)} = \frac{2}{25}$ & $\text{cb} = \frac{3}{25}$                   \\
+      $\text{ab} = \frac{1}{25}$ & $\text{aa} = \frac{1}{25}$       & $\text{(aa, ab)} = \frac{2}{25}$ &                                              \\
+      $\text{ba} = \frac{1}{25}$ & $\text{ab} = \frac{1}{25}$       &                                  &                                              \\
+      $\text{bb} = \frac{1}{25}$ &                                  &                                  &                                              \\
+    \end{tabular}\\
+    \\
+    \\
+    \begin{tabular}{l|l|l}
+      $\text{cc} = \frac{9}{25}$                   & $\text{cc} = \frac{9}{25}$                   & $\text{((ac, bc), ((ba, bb), (aa, ab)))} = \frac{10}{25}$ \\
+      $\text{(ca, cb)} = \frac{6}{25}$             & $\text{(ca, cb)} = \frac{6}{25}$             & $\text{cc} = \frac{9}{25}$                                \\
+      $\text{((ba, bb), (aa, ab))} = \frac{4}{25}$ & $\text{(ac, bc)} = \frac{6}{25}$             & $\text{(ca, cb)} = \frac{6}{25}$                          \\
+      $\text{ac} = \frac{3}{25}$                   & $\text{((ba, bb), (aa, ab))} = \frac{4}{25}$ &                                                           \\
+      $\text{bc} = \frac{3}{25}$                   &                                              &                                                           \\
+    \end{tabular}\\
+    \\
+    \\
+    \begin{tabular}{l|l}
+      $\text{(cc, (ca, cb))} = \frac{15}{25}$                   & $\text{((cc, (ca, cb)), ((ac, bc), ((ba, bb), (aa, ab))))} = \frac{25}{25}$   \\
+      $\text{((ac, bc), ((ba, bb), (aa, ab)))} = \frac{10}{25}$ & \\
+    \end{tabular}\\
+    \\
+    \\
+    \begin{tabular}{l}
+      $\text{aa} \rightarrow 1110$ \\
+      $\text{ab} \rightarrow 1111$ \\
+      $\text{ac} \rightarrow 100$ \\
+      $\text{ba} \rightarrow 1100$ \\
+      $\text{bb} \rightarrow 1101$ \\
+      $\text{bc} \rightarrow 101$ \\
+      $\text{ca} \rightarrow 010$ \\
+      $\text{cb} \rightarrow 011$ \\
+      $\text{cc} \rightarrow 00$ \\
+    \end{tabular}\\
+  }
+  \\
+  Kompressionsrate:\\
+  \begin{align*}
+    (4 \cdot \frac{1}{25} + 4 \cdot \frac{1}{25} + 3 \cdot \frac{3}{25} + 4 \cdot \frac{1}{25} + 4 \cdot \frac{1}{25} + 3 \cdot \frac{3}{25} + 3 \cdot \frac{3}{25} + 3 \cdot \frac{3}{25} + 2 \cdot \frac{9}{25}) / 2 =\\
+    (4 \cdot \frac{4}{25} + 4 \cdot \frac{9}{25} + \frac{18}{25}) / 2 =\\
+    1.4
+  \end{align*}
+
+  \subsection*{c)}
+
+
 \end{document}
