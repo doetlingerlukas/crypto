@@ -4,19 +4,24 @@ def decode(number)
   len = 3 # Initial length is 3 bits.
   i = 0
 
+  numbers = []
+
   while i < number.length
-    if i == number.length - 1
-      return len if number[i] == '0' # Last digit has to be 0.
-      break
-    end
+    raise "#{number} is not a code word." if (i + len) >= number.length
 
-    next_len = number[i...(i + len)].to_i(2)
-
+    n = number[i...(i + len)].to_i(2)
     i += len
-    len = next_len
+
+    if number[i] == '0'
+      i += 1
+      numbers << n
+      len = 3
+    else
+      len = n
+    end
   end
 
-  raise "#{number} is not a code word."
+  numbers
 end
 
 [
