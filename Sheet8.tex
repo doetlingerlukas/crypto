@@ -12,5 +12,25 @@
 
   \section*{23)}
 
+  Entropie $H(\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{8}) = 1.75$\\
+  erwartete Länge der Huffman-Codierung $L = 1.75$\\
+  \\
+  $p_0 = \frac{1}{2}, p_1 = \frac{1}{4}, p_3 = \frac{1}{8}, p_4 = \frac{1}{8}$\\
+  \\
+  \begin{align*}
+    & L(\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{8}) = &\\
+    & L(\frac{1}{2}, \frac{1}{4}, \frac{1}{4}) + \frac{1}{8} + \frac{1}{8} = L(\frac{1}{2}, \frac{1}{4}, \frac{1}{4}) + \frac{1}{4} =\\ 
+    & L(\frac{1}{2}, \frac{1}{2}) + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = L(\frac{1}{2}, \frac{1}{2}) + \frac{3}{4} =\\
+    & L(1) + \frac{1}{2} + \frac{1}{2} + \frac{3}{4} = L(1) + \frac{7}{4} = 0 + \frac{7}{4} = 1.75
+  \end{align*}
+  \\
+  Der Vorteil der Rekursionsformel liegt darin, dass ma daraus die Huffman-Codierung erzeugen kann.\\
+  \\
+  Codierung: $p_0 \rightarrow 0, p_1 \rightarrow 10, p_2 \rightarrow 110, p_3 \rightarrow 111$\\
+  \\
+  \begin{align*}
+    & 1 \cdot \frac{1}{2} + 2 \cdot \frac{1}{4} + 3 \cdot \frac{1}{8} + 3 \cdot \frac{1}{8} = 1.75
+  \end{align*}
+
   \section*{24)}
 \end{document}
