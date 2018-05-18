@@ -1,4 +1,3 @@
- 
 #include <cstdlib> 
 #include <cmath>  
 #include <sstream>
@@ -21,7 +20,7 @@ vector<int> decodeNumber(vector<int> sequence) {
 	
 	while (i < sequence.size()) {
 		if (i+len > sequence.size()) {
-			throw invalid_argument("Unvalid sequence!");
+			throw invalid_argument("Invalid sequence!");
 		}
 		stringstream sub_seq;
 		copy(sequence.begin() + i, sequence.begin() + i + len, ostream_iterator<int>(sub_seq, "")); 
