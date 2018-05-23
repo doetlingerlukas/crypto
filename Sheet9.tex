@@ -93,7 +93,7 @@
     &          & + &\ P\{C = c_2\} \cdot H(M | C = c_2)\\
     &          & + &\ P\{C = c_3\} \cdot H(M | C = c_3)\\
     &          & = &\ \frac{7}{16} \cdot H(\frac{6}{7}, 0,  \frac{1}{7}) + \frac{5}{16} \cdot H(\frac{2}{5}, \frac{3}{5}, 0) + \frac{1}{4} \cdot H(0, \frac{1}{4}, \frac{3}{4})\\
-    &          & \approx &\ 0,77
+    &          & \approx &\ \SI{0,77}{\bit}
   \end{align*}
 
   Schlüsselmehrdeutigkeit:
@@ -103,6 +103,28 @@
     &          & + &\ P\{C = c_2\} \cdot H(K | C = c_2)\\
     &          & + &\ P\{C = c_3\} \cdot H(K | C = c_3)\\
     &          & = &\ \frac{7}{16} \cdot H(\frac{6}{7}, \frac{1}{7}) + \frac{5}{16} \cdot H(\frac{3}{5}, \frac{2}{5}) + \frac{1}{4} \cdot H(\frac{3}{4}, \frac{1}{4})\\
-    &          & \approx &\ 0,77
+    &          & \approx &\ \SI{0,77}{\bit}
   \end{align*}
+
+  Welche Informationen erhalten wir aus dem Chiffretext?
+
+  \begin{quote}
+    Satz 2.5:
+
+    \begin{align*}
+      & I(X | Y) = H(X) - H(X | Y) = H(X) + H(Y) - H(X, Y)
+    \end{align*}
+  \end{quote}
+
+  \begin{align*}
+    & I(M | C) = H(M) - H(M | C) = H(\frac{1}{2}, \frac{1}{4}, \frac{1}{4}) - H(M | C) \approx \SI{0,735}{\bit}
+  \end{align*}
+
+  \begin{align*}
+    & I(K | C) = H(K) - H(K | C) = H(\frac{3}{4}, \frac{1}{4}) - H(K | C) \approx \SI{0,046}{\bit}
+  \end{align*}
+
+  Wie würden Sie einen Maximum-Likelihood-Angriff führen?
+
+  Chiffretext $c$ wird abgehört, dann wird die Nachricht, für die $P\{M = m | C = c\}$ maximal ist, ausgewählt. In diesem Fall also $c_1 \rightarrow m_1, c_2 \rightarrow m_2, c_3 \rightarrow m_3$.
 \end{document}
