@@ -1,0 +1,62 @@
+% !TEX TS-program = xelatex
+%
+\input{settings.tex}
+
+\begin{document}
+  \title{Informationstheorie und Kryptologie: 9. Blatt für 24.5.2018}
+  \maketitle
+
+  \section*{25)}
+
+  \section*{26)}
+
+  \begin{multicols}{2}
+    Wahrscheinlichkeiten:
+
+    \begin{itemize}
+      \item $P\{M = m_1\} = \frac{1}{2}$
+      \item $P\{M = m_2\} = \frac{1}{4}$
+      \item $P\{M = m_3\} = \frac{1}{4}$
+    \end{itemize}
+
+    \columnbreak
+
+    Schlüssel:
+
+    \begin{itemize}
+      \item $P\{K = k_1\} = \frac{3}{4}$
+      \item $P\{K = k_2\} = \frac{1}{4}$
+    \end{itemize}
+  \end{multicols}
+
+  \begin{multicols}{2}
+    Verschlüsselungstabelle:
+
+    \begin{tabular}{|*3{c|}}
+      \hline
+      $e$ & $k_1$ & $k_2$ \\
+      \hline
+      $m_1$ & $c_1$ & $c_2$ \\
+      $m_2$ & $c_2$ & $c_3$ \\
+      $m_3$ & $c_3$ & $c_1$ \\
+      \hline
+    \end{tabular}
+
+    \columnbreak
+
+    Entschlüsselungstabelle:
+
+    \begin{tabular}{|*3{c|}}
+      \hline
+      $e$ & $k_1$ & $k_2$ \\
+      \hline
+      $c_1$ & $m_1$ & $m_3$ \\
+      $c_2$ & $m_2$ & $m_1$ \\
+      $c_3$ & $m_3$ & $m_2$ \\
+      \hline
+    \end{tabular}
+  \end{multicols}
+
+
+  \section*{27)}
+\end{document}
