@@ -85,4 +85,24 @@
   \end{align*}
 
   \section*{27)}
+
+  Nachrichtenmehrdeutigkeit:
+
+  \begin{align*}
+    & H(M | C) & = &\ P\{C = c_1\} \cdot H(M | C = c_1)\\
+    &          & + &\ P\{C = c_2\} \cdot H(M | C = c_2)\\
+    &          & + &\ P\{C = c_3\} \cdot H(M | C = c_3)\\
+    &          & = &\ \frac{7}{16} \cdot H(\frac{6}{7}, 0,  \frac{1}{7}) + \frac{5}{16} \cdot H(\frac{2}{5}, \frac{3}{5}, 0) + \frac{1}{4} \cdot H(0, \frac{1}{4}, \frac{3}{4})\\
+    &          & \approx &\ 0,77
+  \end{align*}
+
+  Schlüsselmehrdeutigkeit:
+
+  \begin{align*}
+    & H(K | C) & = &\ P\{C = c_1\} \cdot H(K | C = c_1)\\
+    &          & + &\ P\{C = c_2\} \cdot H(K | C = c_2)\\
+    &          & + &\ P\{C = c_3\} \cdot H(K | C = c_3)\\
+    &          & = &\ \frac{7}{16} \cdot H(\frac{6}{7}, \frac{1}{7}) + \frac{5}{16} \cdot H(\frac{3}{5}, \frac{2}{5}) + \frac{1}{4} \cdot H(\frac{3}{4}, \frac{1}{4})\\
+    &          & \approx &\ 0,77
+  \end{align*}
 \end{document}
