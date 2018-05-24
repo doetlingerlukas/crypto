@@ -20,7 +20,7 @@ entropyEnglish/entropyEnglish/lesMiserables\.txt
 # C++
 
 *.o
-sheet_8/dnn
-sheet_9/dlz
+sheet_8/decode_natural_number
+sheet_9/decode_lempel_ziv
 
 .vscode

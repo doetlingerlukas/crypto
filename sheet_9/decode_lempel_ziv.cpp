@@ -1,5 +1,5 @@
-#include <cstdlib> 
-#include <cmath>  
+#include <cstdlib>
+#include <cmath>
 #include <sstream>
 #include <vector>
 #include <string>
@@ -49,28 +49,28 @@ vector<vector<int>> decodeNumber(vector<int> sequence) {
             //cout << "(" << res[0]-i+1 << "," << len << "," << sequence[i+len+1] << ")" << endl;
             i += len;
         }
-        
+
     }
     return to_return;
 }
 
 int main(int argc, char *argv[]) {
-    
+
     if(argc == 2) {
         string input = (argv[1]);
         stringstream iss(input);
-        
+
         char number;
         vector<int> sequence;
         while (iss.get(number)) {
 			const char *to_convert = &number;
 			sequence.push_back(atoi(to_convert));
 		}
-		
+
 		for (vector<int> n : decodeNumber(sequence)) {
 			cout << "(" << n[0] << "," << n[1] << "," << n[2] << ")" << endl;
 		}
-        
+
     } else {
 		cout << "Wrong arg count!" << endl;
 	}

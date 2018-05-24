@@ -1,25 +1,16 @@
-CC = g++
-LD = g++
+TARGET = decode_natural_number
 
-OBJ = decode_natural_number.o
-TARGET = dnn
+CXXFLAGS = -O3 -std=c++1z
 
-CFLAGS = -O3 -std=c++1y
-
-# Rules
 all: $(TARGET)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $^ -o $@
-
 clean:
-	rm -f *.o $(TARGET)
-	
-run: clean all
-		./dnn 10010111111110001001010101100010
+	$(RM) *.o $(TARGET)
+
+run: all
+	./$(TARGET) 10010111111110001001010101100010
 
 .PHONY: clean run
 
-# Dependencies
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+$(TARGET): %: %.o
+	$(CXX) $(CXXFLAGS) $^ -o $@
