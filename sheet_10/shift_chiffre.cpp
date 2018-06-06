@@ -15,7 +15,8 @@ string shift_decode(int key, string input) {
     string to_return;
     for(char& c : input) {
         size_t found = alphabet.find(c);
-        to_return += alphabet.at((found - key) % 26);
+        int index = (static_cast<int>(found) - key) % 26;
+        to_return += alphabet.at(index < 0 ? 26 - abs(index) : index);
     }
     return to_return;
 }

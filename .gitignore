@@ -22,5 +22,6 @@ entropyEnglish/entropyEnglish/lesMiserables\.txt
 *.o
 sheet_8/decode_natural_number
 sheet_9/decode_lempel_ziv
+sheet_10/shift_chiffre
 
 .vscode
