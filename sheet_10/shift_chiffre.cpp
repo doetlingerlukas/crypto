@@ -1,12 +1,5 @@
-#include <cstdlib> 
-#include <cmath>  
-#include <sstream>
-#include <vector>
 #include <string>
 #include <iostream>
-#include <algorithm>
-#include <iterator>
-#include <stdexcept>
 
 using namespace std;
 
