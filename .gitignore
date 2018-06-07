@@ -25,3 +25,9 @@ sheet_9/decode_lempel_ziv
 sheet_10/shift_chiffre
 
 .vscode
+
+# Sava
+
+.idea
+*.iml
+shift_chiffre-java/out/*
