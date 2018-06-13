@@ -1,0 +1,37 @@
+% !TEX TS-program = xelatex
+%
+\input{settings.tex}
+
+\begin{document}
+  \title{Informationstheorie und Kryptologie: 11. Blatt für 14.6.2018}
+  \maketitle
+
+  \section*{28)}
+
+    Bei einer Zahlenmenge ${0, 1, ..., q-2}$, gilt für ein primitives Element $\zeta$:
+    \[ \{ 0, 1, ..., q-2 \} \to F \setminus \{ 0 \} , i \to \zeta^i \]
+    Für ein primitives Element sind alle $\zeta^i$ innerhalb der Logarithmentafel eindeutig.\\
+    Java-Version zur Überprüfung, ob ein Element primitiv ist:\\
+    \lstinputlisting[language=Java]{log_table-java/src/log_table.java}
+    
+    Für $q = 31$ ist das kleinste primitive Element $\zeta = 3$.\\
+    Produkte können nach folgender Formeln berechnet werden:
+    \begin{equation}
+      \begin{split}
+        a*b & = \zeta^{(log_\zeta(a)+log_\zeta(b) mod (q-1)} \\
+        16*17 & = \zeta^{(log_\zeta(16)+log_\zeta(17) mod (30)} \\
+        & = \zeta^{(6+7) mod (30)} \\
+        & = \zeta^{13} = 24
+      \end{split}
+    \end{equation}
+    Das Inverse kann nach folgender Formel ermittelt werden:
+    \begin{equation}
+      \begin{split}
+        a^{-1} & = \zeta^{q-1-log_\zeta(a)} \\
+        16^{-1} & = \zeta^{30-1-log_\zeta(16)} \\
+        & = \zeta^{30-6} \\
+        & = \zeta^{24} = 2
+      \end{split}
+    \end{equation}
+        
+\end{document}
