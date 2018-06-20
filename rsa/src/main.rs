@@ -1,13 +1,10 @@
-extern crate primapalooza;
-use primapalooza::prime_factorization;
-
 fn main() {
   let n: u64 = 20687;
   let e: u64 = 31;
 
-  let factors = prime_factorization(n as usize);
+  let factors = (1..=n).into_iter().filter(|&x| n % x == 0).skip(1).take(2).collect::<Vec<u64>>();
 
-  let (p, q) = (factors[0] as u64, factors[1] as u64);
+  let (p, q) = (factors[0], factors[1]);
 
   let x = (p - 1) * (q - 1);
 

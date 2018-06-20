@@ -4,4 +4,3 @@ version = "0.1.0"
 authors = ["Markus Reiter <me@reitermark.us>"]
 
 [dependencies]
-primapalooza = "0.3.4"
