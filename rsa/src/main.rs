@@ -1,12 +1,22 @@
+mod factors;
+use factors::factors;
+
 fn main() {
   let n: u64 = 20687;
   let e: u64 = 31;
 
-  let factors = (1..=n).into_iter().filter(|&x| n % x == 0).skip(1).take(2).collect::<Vec<u64>>();
+  let factors = factors(n);
 
   let (p, q) = (factors[0], factors[1]);
 
+  println!("Factors:");
+  println!("{} = {} × {}", n, p, q);
+  println!();
+
   let x = (p - 1) * (q - 1);
+
+  println!("{} = {} × {}", x, p - 1, q - 1);
+  println!();
 
   let factor_1 = (x / e) as u64;
   let rest_1 = x - factor_1 * e;
