@@ -31,6 +31,10 @@ fn main() {
   println!("1 = {} - {} × ({} - {} × {}) = d × {} - {} × {}", e, factor_2, x, factor_1, e, e, factor_2, x);
 
   let d = (e - factor_2 * (x - factor_1 * e) + factor_2 * x) / e;
-
   println!("⇒ d = {}", d);
+
+  let ciphers = [2966, 0, 17830, 7105, 15200, 15200, 0];
+
+  let decrypted = ciphers.iter().map(|&c| (c as u64).pow(d as u32) % n).map(|q| ((q as u8 + 65) as char).to_string()).collect::<Vec<String>>().join("");
+  println!("{:?}", decrypted);
 }
