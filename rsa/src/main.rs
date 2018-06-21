@@ -1,6 +1,11 @@
 mod factors;
 use factors::factors;
 
+extern crate num_bigint;
+use num_bigint::BigUint;
+extern crate num_traits;
+use num_traits::ToPrimitive;
+
 fn main() {
   let n: u64 = 20687;
   let e: u64 = 31;
@@ -37,14 +42,20 @@ fn main() {
     panic!{"gcd({}, {}) is not 1!", e, x};
   }
 
-  println!();
   println!("1 = {} - {} × ({} - {} × {}) = d × {} - {} × {}", e, factor_2, x, factor_1, e, e, factor_2, x);
 
   let d = (e - factor_2 * (x - factor_1 * e) + factor_2 * x) / e;
   println!("⇒ d = {}", d);
 
-  let ciphers = [2966, 0, 17830, 7105, 15200, 15200, 0];
+  let ciphers: &[u64] = &[2966, 0, 17830, 7105, 15200, 15200, 0];
 
-  let decrypted = ciphers.iter().map(|&c| (c as u64).pow(d as u32) % n).map(|q| ((q as u8 + 65) as char).to_string()).collect::<Vec<String>>().join("");
-  println!("{:?}", decrypted);
+  let decrypted = ciphers.iter()
+    .map(|&c|  BigUint::from(c).modpow(&BigUint::from(d), &BigUint::from(n)).to_u64().unwrap())
+    .map(|q| ((q as u8 + 65) as char).to_string())
+    .collect::<Vec<String>>()
+    .join("");
+
+  println!();
+  println!("Decrypted Cipher:");
+  println!("{}", decrypted);
 }
