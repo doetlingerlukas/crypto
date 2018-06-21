@@ -49,11 +49,10 @@ fn main() {
 
   let ciphers: &[u64] = &[2966, 0, 17830, 7105, 15200, 15200, 0];
 
-  let decrypted = ciphers.iter()
+  let decrypted: String = ciphers.iter()
     .map(|&c|  BigUint::from(c).modpow(&BigUint::from(d), &BigUint::from(n)).to_u64().unwrap())
-    .map(|q| ((q as u8 + 65) as char).to_string())
-    .collect::<Vec<String>>()
-    .join("");
+    .map(|q| (q as u8 + 65) as char)
+    .collect();
 
   println!();
   println!("Decrypted Cipher:");
