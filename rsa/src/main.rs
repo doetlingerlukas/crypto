@@ -51,7 +51,7 @@ fn main() {
 
   let decrypted: String = ciphers.iter()
     .map(|&c|  BigUint::from(c).modpow(&BigUint::from(d), &BigUint::from(n)).to_u64().unwrap())
-    .map(|q| (q as u8 + 65) as char)
+    .map(|q| ('A' as u8 + q as u8) as char)
     .collect();
 
   println!();
