@@ -1,0 +1,8 @@
+[package]
+name = "rabin"
+version = "0.1.0"
+authors = ["Markus Reiter <me@reitermark.us>"]
+
+[dependencies]
+num-traits = "0.2"
+num-bigint = "0.2"
